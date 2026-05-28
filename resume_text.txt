@@ -1,0 +1,45 @@
+Dakshta Wadibhasme
+Adm. No. 24JE0608 ♂phone9421650923
+/envel⌢pedakshtawadibhasme@gmail.com /linkedinLinkedIn /githubGithub
+Education
+IIT (ISM) Dhanbad Expected May 2028
+Bachelor of T echnology in Computer Science (GPA: 8.88 / 10.00) Dhanbad, Jharkhand
+• Relevant Coursework: Data Structures and Algorithms (C), Unix and software tools, Computer programming,
+Algorithm design and analysis, Operating System, DBMS, Computer Organisation and architecture, Statistical
+methods
+Bhavan’s B.P. Vidya Mandir (Class X)99.20% (C.B.S.E. Board) May 2022
+Dr. Ambedkar College (Class XII) 94.33% (Maharashtra State Board) May 2024
+Projects
+Nimbus | React, Node.js, MongoDB Atlas, RAG, Gemini API, JWT Github
+• Engineered a Retrieval-Augmented Generation (RAG) pipeline utilizing MongoDB Vector Search and Gemini Vision
+to embed and retrieve past design assets, ensuring aesthetic consistency in AI-generated media.
+• Developed a full-stack orchestrator with a React frontend and Node.js backend to automate administrative
+workﬂows, including AI-driven Markdown report synthesis and integrated SMTP for automated email dispatch.
+• Designed a secure, scalable architecture featuring JWT multi-session authentication with refresh token rotation,
+alongside cloud-based media hosting via Cloudinary.
+Systems Engineering & Concurrency | C/C++, xv6 OS, Socket API, POSIX Threads Server GitHub | xv6 GitHub
+• Custom HTTP Server: Engineered a high-performance, multi-threaded web server in C++ using native Socket APIs
+to eﬃciently manage concurrent client connections and process TCP data streams.
+• Kernel Multithreading: Implemented kernel-level multithreading in the xv6 operating system by designing custom
+clone and join system calls in C.
+• Concurrency Optimization: Bridged user and kernel spaces by developing a user-level threading library,
+demonstrating deep comprehension of thread lifecycles, network protocols, and shared memory.
+T echnical Skills
+Languages: C, C++, Python, JavaScript, HTML/CSS
+Frameworks & Databases: React.js, Node.js, Express.js, Bootstrap, MongoDB, RAG pipelines
+T ools & Systems: Linux, POSIX Threads, Git, Docker, REST APIs, JWT, VS Code
+Achievements
+• Qualiﬁed JEE Advanced with Rank 3118.
+• Scored 99.69 percentile in MHT-CET and got 2nd position in the RTMNU university Ladies category merit list.
+• Bharti Airtel Merit-cum-Means Scholarship recipient for the full duration of the B.T ech program.
+• Specialist in Codeforces(Max rating: 1453).
+• Won the best girls team prize at Obscurathon 1.0 (relay-style hackathon conducted by CSE department)
+• Finalist in the National Entrepreneurship Olympiad at high school level conducted by E-cell Visvesvaraya
+National Institute of T echnology (VNIT), Nagpur.
+• Among top 3 ﬁnalists in British Council Project at International level (Documentary making)
+Social Engagements
+Member: CSE society of IIT Dhanbad, WebCSE(Supervisor), CSE Times (Creative head)
+Volunteer: Member of Vidharbha Y outh Organization’s Nature Club,Anchor for UDBHAV 2025 (the departmental annual
+program)
+Sports-Engagements: Badminton-Represented college at Inter IIT sports and also at Inﬁnito sports event at IIT Patna,
+1st Winner in College Badminton T ournament
