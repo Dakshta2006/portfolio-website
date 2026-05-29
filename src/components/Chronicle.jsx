@@ -288,11 +288,11 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="card"
-          style={{ padding: '2rem', borderLeft: '4px solid var(--accent-cyan)', background: 'rgba(26, 26, 30, 0.6)' }}
+          className="card card-padding-lg"
+          style={{ borderLeft: '4px solid var(--accent-cyan)', background: 'rgba(26, 26, 30, 0.6)' }}
         >
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div style={{ flex: '1', minWidth: '250px' }}>
+          <div className="hud-grid">
+            <div className="hud-stats-container">
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{
                   width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(0, 240, 255, 0.1)',
@@ -310,12 +310,10 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
                 </div>
               </div>
 
-
-
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'JetBrains Mono', fontSize: '0.9rem' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                    <span> FULL STACK & DATABASE SYSTEMS(FastAPI, React, Express)</span>
+                    <span> FULL STACK & DATABASE SYSTEMS (FastAPI, React, Express)</span>
                   </div>
                   <div className="hud-meter">
                     <div className="hud-meter-fill" style={{ width: '85%', backgroundColor: 'var(--accent-cyan)', color: 'var(--accent-cyan)' }}></div>
@@ -331,8 +329,6 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
                   </div>
                 </div>
 
-
-
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
                     <span>ALGORITHMIC LOGIC (Codeforces, JEE math)</span>
@@ -341,13 +337,11 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
                     <div className="hud-meter-fill" style={{ width: '80%', backgroundColor: 'var(--accent-peach)', color: 'var(--accent-peach)' }}></div>
                   </div>
                 </div>
-
-
               </div>
             </div>
 
             {/* CHARACTER TOOLKIT INVENTORY */}
-            <div style={{ flex: '1', minWidth: '250px', borderLeft: '1px solid rgba(255, 255, 255, 0.1)', paddingLeft: '2rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div className="hud-inventory-container">
               <h4 style={{ fontFamily: 'JetBrains Mono', fontSize: '1rem', color: 'var(--text-primary)', textTransform: 'uppercase', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', paddingBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <FaUserShield style={{ color: 'var(--accent-cyan)' }} /> CORE TOOLKIT & DEV STACK
               </h4>
@@ -365,17 +359,16 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
                   <span style={{ color: 'var(--accent-purple)', display: 'block', fontWeight: 'bold', marginBottom: '0.25rem' }}>[DATABASE / CACHE]</span>
                   <span>MongoDB & Redis Caching</span>
                 </div>
-
               </div>
             </div>
           </div>
         </motion.div>
 
         {/* NARRATIVE ADVENTURE INTERFACE */}
-        <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '3rem', alignItems: 'start', flexWrap: 'wrap' }} className="story-mode-grid">
+        <div className="story-mode-grid">
 
           {/* LEFT SIDEBAR: PROJECT SELECTOR */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="chronicle-selector">
             <h4 style={{ fontFamily: 'JetBrains Mono', fontSize: '0.85rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Select Project
             </h4>
@@ -385,31 +378,18 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
                 onClick={() => {
                   setActiveProject(idx);
                 }}
+                className={`chronicle-selector-item ${activeProject === idx ? 'active-item' : ''}`}
                 style={{
-                  padding: '1.25rem', borderRadius: '10px', cursor: 'pointer',
-                  background: activeProject === idx ? `rgba(${proj.glowColorRGB}, 0.05)` : 'rgba(26, 26, 30, 0.3)',
-                  border: activeProject === idx ? `1px solid ${proj.color}` : '1px solid rgba(255, 255, 255, 0.05)',
-                  boxShadow: activeProject === idx ? `0 0 15px rgba(${proj.glowColorRGB}, 0.1)` : 'none',
-                  transition: 'all 0.3s ease',
-                  display: 'flex', gap: '1rem', alignItems: 'center'
+                  '--proj-color': proj.color,
+                  '--proj-glow': `rgba(${proj.glowColorRGB}, 0.15)`,
+                  '--proj-glow-bg': `rgba(${proj.glowColorRGB}, 0.05)`
                 }}
               >
-                <div style={{
-                  width: '32px', height: '32px', borderRadius: '6px',
-                  background: activeProject === idx ? proj.color : 'rgba(255, 255, 255, 0.05)',
-                  color: activeProject === idx ? '#020617' : 'var(--text-secondary)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'JetBrains Mono', fontWeight: 'bold', fontSize: '0.9rem',
-                  transition: 'all 0.3s ease'
-                }}>
+                <div className="chronicle-selector-num">
                   0{idx + 1}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <h5 style={{
-                    fontFamily: 'JetBrains Mono', fontSize: '0.9rem', margin: 0,
-                    color: activeProject === idx ? 'var(--text-primary)' : 'var(--text-secondary)',
-                    transition: 'all 0.3s ease'
-                  }}>
+                  <h5 className="chronicle-selector-title">
                     {proj.title.split(': ')[1]}
                   </h5>
                   <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
@@ -429,9 +409,9 @@ export default function Chronicle({ initialProjectIdx = 0, setMode }) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="card"
+                className="card card-padding-lg"
                 style={{
-                  padding: '2.5rem', background: 'rgba(26, 26, 30, 0.5)',
+                  background: 'rgba(26, 26, 30, 0.5)',
                   borderTop: `4px solid ${projects[activeProject].color}`,
                   flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '1.5rem'
                 }}

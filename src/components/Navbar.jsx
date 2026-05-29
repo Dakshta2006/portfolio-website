@@ -44,7 +44,7 @@ export default function Navbar({ mode, setMode }) {
       animate={{ y: 0, opacity: 1, x: "-50%" }}
       transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
       className="navbar-container"
-      style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.4rem 0.8rem' }}
+      style={{ display: 'flex', alignItems: 'center' }}
     >
       <div className="nav-link" onClick={() => handleNavClick('init')}>INIT</div>
       <div className="nav-link" onClick={() => handleNavClick('education')}>EDU_LOG</div>

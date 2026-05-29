@@ -30,7 +30,7 @@ export default function Education() {
         viewport={{ once: true, margin: "-100px" }}
         style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
       >
-        <motion.div variants={itemVariants} className="card" style={{ padding: '2rem' }}>
+        <motion.div variants={itemVariants} className="card card-padding-lg">
           <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>IIT (ISM) Dhanbad</h3>
           <p style={{ fontWeight: '500', marginBottom: '0.5rem', color: 'var(--accent-teal)' }}>Bachelor of Technology in Computer Science (Expected May 2028)</p>
           <p style={{ color: 'var(--text-secondary)' }}>GPA: 9.03 / 10.00</p>
@@ -39,18 +39,18 @@ export default function Education() {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-          <motion.div variants={itemVariants} className="card" style={{ padding: '1.5rem' }}>
+        <div className="education-grid">
+          <motion.div variants={itemVariants} className="card card-padding-md">
             <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Dr. Ambedkar College</h4>
             <p style={{ color: 'var(--text-secondary)' }}>Class XII (Maharashtra State Board) - 94.33%</p>
           </motion.div>
-          <motion.div variants={itemVariants} className="card" style={{ padding: '1.5rem' }}>
+          <motion.div variants={itemVariants} className="card card-padding-md">
             <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Bhavan's B.P. Vidya Mandir</h4>
             <p style={{ color: 'var(--text-secondary)' }}>Class X (C.B.S.E. Board) - 99.20%</p>
           </motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="card" style={{ padding: '1.5rem', borderLeft: '4px solid var(--accent-peach)' }}>
+        <motion.div variants={itemVariants} className="card card-padding-md" style={{ borderLeft: '4px solid var(--accent-peach)' }}>
           <h4 style={{ color: 'var(--accent-peach)', marginBottom: '0.5rem' }}>Key Highlight</h4>
           <p>Qualified JEE Advanced with Rank 3118.</p>
         </motion.div>

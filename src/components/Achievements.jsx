@@ -28,8 +28,7 @@ export default function Achievements() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="card"
-        style={{ padding: '2rem' }}
+        className="card card-padding-lg"
       >
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {achievements.map((item, index) => (
@@ -54,7 +53,7 @@ export default function Achievements() {
         </ul>
       </motion.div>
 
-      <footer style={{ marginTop: '8rem', padding: '2rem 0', textAlign: 'center', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-color)' }}>
+      <footer className="footer-container">
         <p>© 2026 Dakshta Wadibhasme.</p>
       </footer>
     </section>

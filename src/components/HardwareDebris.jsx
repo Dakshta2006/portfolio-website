@@ -6,6 +6,16 @@ export default function HardwareDebris() {
   const [particles, setParticles] = useState([]);
   const [lightningArcs, setLightningArcs] = useState([]);
   const [sparkParticles, setSparkParticles] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Scattered keyboard keys configuration
   const initialKeys = [
@@ -383,102 +393,106 @@ export default function HardwareDebris() {
         ))}
       </svg>
 
-      {/* 2. Floating Entangled Code Fragments */}
-      {codeFragments.map((frag, idx) => (
-        <motion.div
-          key={idx}
-          style={{
-            position: 'absolute',
-            top: frag.top,
-            left: frag.left,
-            color: frag.color,
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: '0.75rem',
-            userSelect: 'none',
-            pointerEvents: 'none',
-            whiteSpace: 'nowrap',
-            textShadow: `0 0 8px ${frag.color}`
-          }}
-          animate={{
-            x: [0, 8, -8, 0],
-            y: [0, -12, 12, 0],
-          }}
-          transition={{
-            duration: frag.speed,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          {frag.text}
-        </motion.div>
-      ))}
+      {!isMobile && (
+        <>
+          {/* 2. Floating Entangled Code Fragments */}
+          {codeFragments.map((frag, idx) => (
+            <motion.div
+              key={idx}
+              style={{
+                position: 'absolute',
+                top: frag.top,
+                left: frag.left,
+                color: frag.color,
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.75rem',
+                userSelect: 'none',
+                pointerEvents: 'none',
+                whiteSpace: 'nowrap',
+                textShadow: `0 0 8px ${frag.color}`
+              }}
+              animate={{
+                x: [0, 8, -8, 0],
+                y: [0, -12, 12, 0],
+              }}
+              transition={{
+                duration: frag.speed,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              {frag.text}
+            </motion.div>
+          ))}
 
-      {/* 3. Interactive Draggable Keyboard Keycaps */}
-      {initialKeys.map((key, idx) => (
-        <motion.div
-          key={idx}
-          drag
-          dragConstraints={{ 
-            left: -30, 
-            right: window.innerWidth * 0.9, 
-            top: -30, 
-            bottom: window.innerHeight * 1.5 
-          }}
-          whileDrag={{ 
-            scale: 1.15, 
-            rotate: key.rotate + 15,
-            cursor: 'grabbing',
-            boxShadow: `0 15px 30px rgba(0,0,0,0.5), 0 0 15px ${key.color}44`
-          }}
-          whileHover={{ 
-            scale: 1.08,
-            boxShadow: `0 8px 20px rgba(0,0,0,0.4), 0 0 10px ${key.color}33`
-          }}
-          style={{
-            position: 'absolute',
-            top: key.top,
-            left: key.left,
-            width: key.size,
-            height: key.size,
-            borderRadius: '8px',
-            background: 'linear-gradient(135deg, #222226 0%, #161619 100%)',
-            border: `1px solid rgba(255, 255, 255, 0.08)`,
-            borderBottom: `4px solid rgba(0, 0, 0, 0.85)`,
-            borderRight: `2px solid rgba(0, 0, 0, 0.5)`,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.06)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: key.label.length > 2 ? '0.7rem' : '0.85rem',
-            fontWeight: '800',
-            color: 'var(--text-secondary)',
-            borderColor: `${key.color}22`,
-            cursor: 'grab',
-            userSelect: 'none',
-            rotate: key.rotate,
-            pointerEvents: 'auto',
-            zIndex: 10
-          }}
-          onMouseDown={(e) => {
-            e.currentTarget.style.borderBottomWidth = '1px';
-            e.currentTarget.style.transform = 'translateY(3px)';
-          }}
-          onMouseUp={(e) => {
-            e.currentTarget.style.borderBottomWidth = '4px';
-            e.currentTarget.style.transform = 'translateY(0)';
-          }}
-          onClick={(e) => handleKeyClick(e, key.label)}
-        >
-          <span style={{ 
-            color: key.color, 
-            opacity: 0.85,
-            textShadow: `0 0 6px ${key.color}33`
-          }}>
-            {key.label}
-          </span>
-        </motion.div>
-      ))}
+          {/* 3. Interactive Draggable Keyboard Keycaps */}
+          {initialKeys.map((key, idx) => (
+            <motion.div
+              key={idx}
+              drag
+              dragConstraints={{ 
+                left: -30, 
+                right: window.innerWidth * 0.9, 
+                top: -30, 
+                bottom: window.innerHeight * 1.5 
+              }}
+              whileDrag={{ 
+                scale: 1.15, 
+                rotate: key.rotate + 15,
+                cursor: 'grabbing',
+                boxShadow: `0 15px 30px rgba(0,0,0,0.5), 0 0 15px ${key.color}44`
+              }}
+              whileHover={{ 
+                scale: 1.08,
+                boxShadow: `0 8px 20px rgba(0,0,0,0.4), 0 0 10px ${key.color}33`
+              }}
+              style={{
+                position: 'absolute',
+                top: key.top,
+                left: key.left,
+                width: key.size,
+                height: key.size,
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #222226 0%, #161619 100%)',
+                border: `1px solid rgba(255, 255, 255, 0.08)`,
+                borderBottom: `4px solid rgba(0, 0, 0, 0.85)`,
+                borderRight: `2px solid rgba(0, 0, 0, 0.5)`,
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.06)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: key.label.length > 2 ? '0.7rem' : '0.85rem',
+                fontWeight: '800',
+                color: 'var(--text-secondary)',
+                borderColor: `${key.color}22`,
+                cursor: 'grab',
+                userSelect: 'none',
+                rotate: key.rotate,
+                pointerEvents: 'auto',
+                zIndex: 10
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.borderBottomWidth = '1px';
+                e.currentTarget.style.transform = 'translateY(3px)';
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.borderBottomWidth = '4px';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+              onClick={(e) => handleKeyClick(e, key.label)}
+            >
+              <span style={{ 
+                color: key.color, 
+                opacity: 0.85,
+                textShadow: `0 0 6px ${key.color}33`
+              }}>
+                {key.label}
+              </span>
+            </motion.div>
+          ))}
+        </>
+      )}
 
       {/* 4. Click Glitch Text particles */}
       <AnimatePresence>

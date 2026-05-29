@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaGithub, FaServer, FaTerminal, FaHeartbeat, 
-  FaBookOpen, FaPython, FaReact, FaNodeJs 
+import {
+  FaGithub, FaServer, FaTerminal, FaHeartbeat,
+  FaBookOpen, FaPython, FaReact, FaNodeJs
 } from 'react-icons/fa';
 import { SiCplusplus, SiC, SiMongodb, SiExpress } from 'react-icons/si';
 
@@ -23,7 +23,7 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
         { name: "POSIX Threads", icon: <FaServer />, color: "var(--accent-purple)" }
       ],
       description: "I engineered a high-performance, multi-threaded web server in C++ using native Socket APIs. Bypassing modern frameworks allowed me to directly handle socket listeners, parse raw request streams, and manage a POSIX thread pool to process concurrent TCP connections.",
-      link: "https://github.com/Dakshta2006/Custom-HTTP-Server"
+      link: "https://github.com/Dakshta2006/Multithreaded-Server"
     },
     {
       id: "APP-02",
@@ -58,7 +58,7 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
         { name: "Syscalls", icon: <FaServer />, color: "var(--accent-peach)" }
       ],
       description: "I implemented kernel-level multithreading inside the xv6 operating system in C. I designed custom clone and join system calls to bridge user-space threads with kernel-space thread schedules, managing virtual memory allocation and locks.",
-      link: "https://github.com/Dakshta2006/xv6"
+      link: "https://github.com/Davidvivek/OS_Projects_G5"
     },
     {
       id: "AI-04",
@@ -75,7 +75,7 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
         { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" }
       ],
       description: "I designed a 3-tier clinical decision support system utilizing FastAPI and MongoDB. The system runs Bayesian probability calculations on symptom patterns to output ranked differential diagnoses, helping triage patients efficiently.",
-      link: "https://github.com/Dakshta2006/Fever-Diagnosis-System"
+      link: "https://github.com/Dakshta2006/DBMS-M8"
     }
   ];
 
@@ -93,14 +93,14 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
 
   // Map projects with their original indices before filtering
   const projectsWithIndex = projects.map((p, idx) => ({ ...p, originalIndex: idx }));
-  const filteredProjects = projectsWithIndex.filter(project => 
+  const filteredProjects = projectsWithIndex.filter(project =>
     activeFilter === 'all' || project.category === activeFilter
   );
 
   return (
     <section className="section" id="projects">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -109,7 +109,7 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
         >
           Projects
         </motion.h2>
-        
+
         <span style={{ fontFamily: 'JetBrains Mono', color: 'var(--accent-cyan)', fontSize: '0.85rem', fontWeight: 700 }}>
           [PORTFOLIO ARCHIVE : SYSTEM INDEX]
         </span>
@@ -129,27 +129,7 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                style={{
-                  position: 'relative',
-                  background: 'transparent',
-                  border: 'none',
-                  color: isActive ? '#020617' : 'var(--text-secondary)',
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontWeight: 700,
-                  fontSize: '0.8rem',
-                  padding: '0.5rem 1.2rem',
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                  zIndex: 1,
-                  transition: 'color 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  outline: 'none'
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) e.currentTarget.style.color = 'var(--accent-cyan)';
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) e.currentTarget.style.color = 'var(--text-secondary)';
-                }}
+                className={`filter-tab ${isActive ? 'active' : ''}`}
               >
                 {isActive && (
                   <motion.div
@@ -187,13 +167,13 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
             {filteredProjects.map((project) => {
               const isHovered = hoveredIdx === project.originalIndex;
               const isAnyHovered = hoveredIdx !== null;
-              
+
               return (
                 <motion.div
                   layout
                   initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ 
-                    opacity: isAnyHovered && !isHovered ? 0.35 : 1, 
+                  animate={{
+                    opacity: isAnyHovered && !isHovered ? 0.35 : 1,
                     scale: isHovered ? 1.02 : 1,
                     filter: isAnyHovered && !isHovered ? 'blur(1px) grayscale(20%)' : 'none'
                   }}
@@ -204,13 +184,13 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
                   onMouseEnter={() => setHoveredIdx(project.originalIndex)}
                   onMouseLeave={() => setHoveredIdx(null)}
                 >
-                  <div 
+                  <div
                     className="project-card"
-                    style={{ 
+                    style={{
                       borderColor: isHovered ? project.color : 'var(--border-color)',
                       borderBottom: `3px solid ${isHovered ? project.color : `rgba(${project.glowColorRGB}, 0.3)`}`,
-                      boxShadow: isHovered 
-                        ? `0 10px 30px rgba(${project.glowColorRGB}, 0.25), 0 0 15px rgba(${project.glowColorRGB}, 0.15)` 
+                      boxShadow: isHovered
+                        ? `0 10px 30px rgba(${project.glowColorRGB}, 0.25), 0 0 15px rgba(${project.glowColorRGB}, 0.15)`
                         : '0 4px 20px rgba(0, 0, 0, 0.3)'
                     }}
                   >
@@ -224,31 +204,31 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
                     <div className="card-terminal-body">
                       {/* Top Row: Icon + Github Link */}
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                        <div style={{ 
-                          width: '48px', 
-                          height: '48px', 
-                          borderRadius: '10px', 
-                          background: `rgba(${project.glowColorRGB}, 0.1)`, 
-                          border: `1px solid rgba(${project.glowColorRGB}, 0.3)`, 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          justifyContent: 'center', 
-                          fontSize: '1.4rem', 
+                        <div style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '10px',
+                          background: `rgba(${project.glowColorRGB}, 0.1)`,
+                          border: `1px solid rgba(${project.glowColorRGB}, 0.3)`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.4rem',
                           color: project.color,
                           boxShadow: `0 0 15px rgba(${project.glowColorRGB}, 0.1)`
                         }}>
                           {project.mainIcon}
                         </div>
-                        <a 
-                          href={project.link} 
-                          target="_blank" 
-                          rel="noreferrer" 
-                          style={{ 
-                            color: 'var(--text-secondary)', 
-                            fontSize: '1.3rem', 
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '1.3rem',
                             transition: 'color 0.2s',
-                            display: 'flex', 
-                            alignItems: 'center' 
+                            display: 'flex',
+                            alignItems: 'center'
                           }}
                           onMouseEnter={(e) => e.currentTarget.style.color = project.color}
                           onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
@@ -264,19 +244,19 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
 
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
                         {project.techBadges.map((badge, bIdx) => (
-                          <span 
+                          <span
                             key={bIdx}
-                            style={{ 
-                              fontFamily: 'JetBrains Mono', 
-                              fontSize: '0.7rem', 
+                            style={{
+                              fontFamily: 'JetBrains Mono',
+                              fontSize: '0.7rem',
                               fontWeight: 500,
-                              background: 'rgba(14, 14, 16, 0.6)', 
+                              background: 'rgba(14, 14, 16, 0.6)',
                               color: 'var(--text-secondary)',
                               border: '1px solid rgba(255, 255, 255, 0.05)',
-                              padding: '0.2rem 0.5rem', 
+                              padding: '0.2rem 0.5rem',
                               borderRadius: '4px',
-                              display: 'flex', 
-                              alignItems: 'center', 
+                              display: 'flex',
+                              alignItems: 'center',
                               gap: '0.3rem'
                             }}
                           >
@@ -287,21 +267,21 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
                       </div>
 
                       {/* Description */}
-                      <p style={{ 
-                        color: 'var(--text-secondary)', 
-                        fontSize: '0.85rem', 
+                      <p style={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '0.85rem',
                         lineHeight: '1.5',
-                        marginBottom: '1.5rem', 
-                        flexGrow: 1 
+                        marginBottom: '1.5rem',
+                        flexGrow: 1
                       }}>
                         {project.description}
                       </p>
 
                       {/* Open Chronicle Button */}
-                      <button 
+                      <button
                         onClick={() => handleInspectProject(project.originalIndex)}
                         className="btn"
-                        style={{ 
+                        style={{
                           alignSelf: 'flex-start',
                           padding: '0.4rem 0.9rem',
                           fontSize: '0.8rem',
@@ -331,14 +311,14 @@ export default function Projects({ setMode, setActiveProjectIdx }) {
 
       {/* Button to view overall Chronicle Mode */}
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
-        <button 
+        <button
           onClick={() => {
             if (setMode) setMode('chronicle');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className="btn"
-          style={{ 
-            border: '1px solid var(--accent-cyan)', 
+          style={{
+            border: '1px solid var(--accent-cyan)',
             background: 'rgba(0, 240, 255, 0.05)',
             color: 'var(--accent-cyan)',
             boxShadow: '0 0 15px rgba(0, 240, 255, 0.1)'

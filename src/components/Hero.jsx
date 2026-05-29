@@ -17,20 +17,20 @@ export default function Hero({ setMode }) {
   };
 
   return (
-    <section className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+    <section className="section" id="init" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4rem' }}
+        className="hero-container"
       >
-        <div style={{ flex: '1', minWidth: '300px' }}>
+        <div className="hero-content">
           <motion.div variants={itemVariants} style={{ fontFamily: 'JetBrains Mono', fontSize: '1.2rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             <span style={{ color: 'var(--text-secondary)' }}>Status:</span>
             <span style={{ color: 'var(--accent-green)', textShadow: '0 0 8px rgba(57, 255, 20, 0.4)' }}>[ONLINE]</span>
           </motion.div>
 
-          <motion.h1 variants={itemVariants} style={{ fontSize: '5rem', lineHeight: 1, marginBottom: '1.5rem', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
+          <motion.h1 variants={itemVariants} className="hero-title">
             DAKSHTA<br />
             <span style={{ color: 'var(--accent-cyan)', textShadow: '0 0 15px rgba(157, 78, 221, 0.2)' }}>WADIBHASME</span>
           </motion.h1>
@@ -40,8 +40,7 @@ export default function Hero({ setMode }) {
             {">"} Passionate about web development, high-performance low-level computing and intelligent AI pipelines.
           </motion.p>
 
-          <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-
+          <motion.div variants={itemVariants} className="hero-buttons">
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
               <a href="https://github.com/Dakshta2006" target="_blank" rel="noreferrer" style={{ fontSize: '1.8rem', color: 'var(--accent-cyan)', display: 'flex' }} onMouseOver={e => e.currentTarget.style.color = 'var(--text-primary)'} onMouseOut={e => e.currentTarget.style.color = 'var(--accent-cyan)'}>
                 <FaGithub />
@@ -56,13 +55,12 @@ export default function Hero({ setMode }) {
           </motion.div>
         </div>
 
-        <motion.div variants={itemVariants} style={{ flex: '0 1 300px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <motion.div variants={itemVariants} className="hero-graphic-container">
           {/* Quantum / Computer Science Graphic */}
-          <div style={{
-            position: 'relative',
-            width: '250px',
-            height: '250px',
-          }}>
+          <div className="hero-graphic">
+            {/* Profile Avatar Core */}
+            <img src="/profilepic.jpg" alt="Profile" className="hero-avatar" />
+
             {/* Glowing Rings to simulate quantum orbits */}
             <motion.div
               animate={{ rotate: 360 }}
@@ -84,12 +82,6 @@ export default function Hero({ setMode }) {
                 boxShadow: '0 0 20px rgba(157, 78, 221, 0.2)'
               }}
             />
-            {/* Core */}
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-              width: '40px', height: '40px', background: 'var(--accent-green)',
-              borderRadius: '50%', boxShadow: '0 0 30px var(--accent-green)'
-            }}></div>
           </div>
         </motion.div>
       </motion.div>
